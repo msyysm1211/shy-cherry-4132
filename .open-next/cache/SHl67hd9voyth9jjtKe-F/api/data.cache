@@ -1,0 +1,1 @@
+{"type":"route","meta":{"status":200,"headers":{"content-type":"application/json","x-next-cache-tags":"_N_T_/layout,_N_T_/api/layout,_N_T_/api/data/layout,_N_T_/api/data/route,_N_T_/api/data"}},"body":"{\"title\":\"ISR Demo Post\",\"content\":\"This page is generated using Incremental Static Regeneration.\",\"timestamp\":\"2026-06-15T07:53:35.890Z\",\"views\":736}"}

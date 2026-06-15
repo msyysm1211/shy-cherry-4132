@@ -34,7 +34,7 @@ export default async function ISRPage() {
         }}
       >
         <p>
-          <strong>服务器生成时间:</strong> {data.timestamp}
+          <strong> 服务器生成时间:</strong> {data.timestamp}
         </p>
         <p>
           <strong>随机值:</strong> {data.randomValue}
