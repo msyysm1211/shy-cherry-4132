@@ -1,0 +1,17 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.revalidate = void 0;
+exports.revalidate = 60;
+function Home() {
+    return (<main style={{ padding: '2rem' }}>
+      <h1>Home (ISR — revalidate: 60s)</h1>
+      <p>Next.js 14 + React 18</p>
+      <p>Built at: {new Date().toISOString()}</p>
+      <p>
+        This page tests the incremental cache read/write path through the
+        Gateway OSS proxy.
+      </p>
+    </main>);
+}
+exports.default = Home;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicGFnZS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbInBhZ2UudHN4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7OztBQUFhLFFBQUEsVUFBVSxHQUFHLEVBQUUsQ0FBQztBQUU3QixTQUF3QixJQUFJO0lBQzFCLE9BQU8sQ0FDTCxDQUFDLElBQUksQ0FBQyxLQUFLLENBQUMsQ0FBQyxFQUFFLE9BQU8sRUFBRSxNQUFNLEVBQUUsQ0FBQyxDQUMvQjtNQUFBLENBQUMsRUFBRSxDQUFDLDRCQUE0QixFQUFFLEVBQUUsQ0FDcEM7TUFBQSxDQUFDLENBQUMsQ0FBQyxxQkFBcUIsRUFBRSxDQUFDLENBQzNCO01BQUEsQ0FBQyxDQUFDLENBQUMsVUFBVSxDQUFDLElBQUksSUFBSSxFQUFFLENBQUMsV0FBVyxFQUFFLENBQUMsRUFBRSxDQUFDLENBQzFDO01BQUEsQ0FBQyxDQUFDLENBQ0E7OztNQUVGLEVBQUUsQ0FBQyxDQUNMO0lBQUEsRUFBRSxJQUFJLENBQUMsQ0FDUixDQUFDO0FBQ0osQ0FBQztBQVpELHVCQVlDIiwic291cmNlc0NvbnRlbnQiOlsiZXhwb3J0IGNvbnN0IHJldmFsaWRhdGUgPSA2MDtcblxuZXhwb3J0IGRlZmF1bHQgZnVuY3Rpb24gSG9tZSgpIHtcbiAgcmV0dXJuIChcbiAgICA8bWFpbiBzdHlsZT17eyBwYWRkaW5nOiAnMnJlbScgfX0+XG4gICAgICA8aDE+SG9tZSAoSVNSIOKAlCByZXZhbGlkYXRlOiA2MHMpPC9oMT5cbiAgICAgIDxwPk5leHQuanMgMTQgKyBSZWFjdCAxODwvcD5cbiAgICAgIDxwPkJ1aWx0IGF0OiB7bmV3IERhdGUoKS50b0lTT1N0cmluZygpfTwvcD5cbiAgICAgIDxwPlxuICAgICAgICBUaGlzIHBhZ2UgdGVzdHMgdGhlIGluY3JlbWVudGFsIGNhY2hlIHJlYWQvd3JpdGUgcGF0aCB0aHJvdWdoIHRoZVxuICAgICAgICBHYXRld2F5IE9TUyBwcm94eS5cbiAgICAgIDwvcD5cbiAgICA8L21haW4+XG4gICk7XG59XG4iXX0=
