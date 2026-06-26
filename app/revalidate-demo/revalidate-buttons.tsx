@@ -1,27 +1,29 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, useTransition } from 'react';
+import { revalidateByTag, revalidateByPath } from './actions';
 
 export default function RevalidateButtons() {
-  const router = useRouter();
-  const [loading, setLoading] = useState<string | null>(null);
+  const [isPending, startTransition] = useTransition();
   const [result, setResult] = useState<string | null>(null);
+  const [loadingType, setLoadingType] = useState<string | null>(null);
 
-  async function handleRevalidate(type: 'tag' | 'path') {
-    setLoading(type);
+  function handleRevalidate(type: 'tag' | 'path') {
+    setLoadingType(type);
     setResult(null);
-    try {
-      const param = type === 'tag' ? 'tag=time-data' : 'path=/revalidate-demo';
-      const res = await fetch(`/api/revalidate?${param}`, { method: 'POST' });
-      const data = await res.json();
-      setResult(data.message || data.error);
-      router.refresh();
-    } catch (e) {
-      setResult('Request failed');
-    } finally {
-      setLoading(null);
-    }
+    startTransition(async () => {
+      try {
+        const data =
+          type === 'tag'
+            ? await revalidateByTag('time-data')
+            : await revalidateByPath('/revalidate-demo');
+        setResult(data.message);
+      } catch {
+        setResult('Request failed');
+      } finally {
+        setLoadingType(null);
+      }
+    });
   }
 
   return (
@@ -29,35 +31,35 @@ export default function RevalidateButtons() {
       <div style={{ display: 'flex', gap: '1rem' }}>
         <button
           onClick={() => handleRevalidate('tag')}
-          disabled={loading !== null}
+          disabled={isPending}
           style={{
             padding: '0.5rem 1.25rem',
-            background: loading === 'tag' ? '#81c784' : '#4caf50',
+            background: loadingType === 'tag' ? '#81c784' : '#4caf50',
             color: 'white',
             border: 'none',
             borderRadius: '6px',
-            cursor: loading ? 'not-allowed' : 'pointer',
+            cursor: isPending ? 'not-allowed' : 'pointer',
             fontSize: '0.9rem',
             fontWeight: 500,
           }}
         >
-          {loading === 'tag' ? 'Revalidating...' : 'Revalidate Tag'}
+          {loadingType === 'tag' ? 'Revalidating...' : 'Revalidate Tag'}
         </button>
         <button
           onClick={() => handleRevalidate('path')}
-          disabled={loading !== null}
+          disabled={isPending}
           style={{
             padding: '0.5rem 1.25rem',
-            background: loading === 'path' ? '#64b5f6' : '#2196f3',
+            background: loadingType === 'path' ? '#64b5f6' : '#2196f3',
             color: 'white',
             border: 'none',
             borderRadius: '6px',
-            cursor: loading ? 'not-allowed' : 'pointer',
+            cursor: isPending ? 'not-allowed' : 'pointer',
             fontSize: '0.9rem',
             fontWeight: 500,
           }}
         >
-          {loading === 'path' ? 'Revalidating...' : 'Revalidate Path'}
+          {loadingType === 'path' ? 'Revalidating...' : 'Revalidate Path'}
         </button>
       </div>
       {result && (
