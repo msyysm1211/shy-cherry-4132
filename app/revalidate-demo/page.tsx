@@ -1,4 +1,5 @@
 import { unstable_cache } from 'next/cache';
+import RevalidateButtons from './revalidate-buttons';
 
 export const revalidate = 3600;
 
@@ -69,10 +70,23 @@ export default async function RevalidateDemoPage() {
 
       <section
         style={{
+          marginBottom: '2rem',
           padding: '1.5rem',
           background: '#fff3e0',
           borderRadius: '8px',
           border: '1px solid #ffcc80',
+        }}
+      >
+        <h2 style={{ margin: '0 0 1rem' }}>Trigger Revalidation</h2>
+        <RevalidateButtons />
+      </section>
+
+      <section
+        style={{
+          padding: '1.5rem',
+          background: '#f3e5f5',
+          borderRadius: '8px',
+          border: '1px solid #ce93d8',
         }}
       >
         <h2 style={{ margin: '0 0 1rem' }}>API Routes</h2>
